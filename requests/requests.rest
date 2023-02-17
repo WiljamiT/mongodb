@@ -1,0 +1,67 @@
+@hostname = localhost
+@port = 5001
+@host = {{hostname}}:{{port}}
+@ObjectID = addobjectidhere
+
+
+### Get all albums
+GET http://{{host}}/api/albums/
+
+
+### Create a new album
+POST http://{{host}}/api/albums/
+Content-Type: application/json
+
+{
+  "artist": "Steely",
+  "title": "Aja",
+  "year": 2300,
+  "genre": ["Jazz Rock", "Progressive Rock"],
+  "tracks":-1
+}
+
+### Create a new album
+POST http://{{host}}/api/albums/
+Content-Type: application/json
+
+{
+  "artist": "Miles Davis",
+  "title": "Kind of Blue",
+  "year": 1959,
+  "genre": "Jazz",
+  "tracks": 5
+}
+
+### Create a new album
+POST http://{{host}}/api/albums/
+Content-Type: application/json
+
+{
+  "artist": "Toto",
+  "title": "Toto IV",
+  "year": 1982,
+  "genre": "Pop",
+  "tracks": 10
+}
+
+
+### Get single
+GET http://{{host}}/api/albums/{{ObjectID}}
+
+### Modify
+PUT http://{{host}}/api/albums/{{ObjectID}}
+Content-Type: application/json
+
+{
+  "artist": "Toto",
+  "title": "Toto IV",
+  "year": 1982,
+  "genre": "Pop",
+  "tracks": 10
+}
+
+### Delete (won't work without query string "login=johndoe")
+DELETE http://{{host}}/api/albums/{{ObjectID}}
+
+### Delete with user information
+DELETE http://{{host}}/api/albums/{{ObjectID}}?login=johndoe
